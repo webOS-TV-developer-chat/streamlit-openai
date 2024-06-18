@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.app_logo import add_logo
 from utils import print_messages
 from utils import img_to_html
 from langchain_core.messages import ChatMessage
@@ -27,7 +26,7 @@ if user_input := st.chat_input("input the message"):
     prompt = ChatPromptTemplate.from_template("""Answer the question.
                                               {question}""")
     chain = prompt | ChatOpenAI(model="gpt-3.5-turbo") | StrOutputParser()
-  # chain = prompt | Ollama(model="llama2") | StrOutputParser()
+  #  chain = prompt | Ollama(model="llama2") | StrOutputParser()
     msg = chain.invoke({"question": user_input})   
     with st.chat_message("",avatar="img/iconchatbot.png",):
         st.write(msg)
